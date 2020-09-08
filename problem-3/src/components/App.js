@@ -19,7 +19,7 @@ class App extends Component {
     this.state = {
       loading: true,      
       galleries: [],
-      guitar_photos: [],
+      favorites: [],
       search_photos: []
     };
   }
@@ -28,6 +28,13 @@ class App extends Component {
      * Creates a dynamic url and returns an axios request
      */
     const url = `https://www.flickr.com/services/rest/?method=flickr.galleries.getList&api_key=${config.apiKey}&user_id=${config.userId}&continuation=0&per_page=${image_limit}&page=1&format=json&nojsoncallback=1&content_type=1`;
+    return axios.get(url);
+  }
+  requestFavorites = () => {
+    /**
+     * Creates a dynamic url and returns an axios request
+     */
+    const url = `https://www.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=${config.apiKey}&user_id=${config.userId}&per_page=${image_limit}&page=1&format=json&nojsoncallback=1&content_type=1&sort=relevance&extras=description`;
     return axios.get(url);
   }
   requestImages = (tag) => {
@@ -43,13 +50,14 @@ class App extends Component {
 
     axios.all([      
       this.requestGalleries(),
-      this.requestImages('electric%20%guitars')
+      this.requestFavorites()
+     // this.requestImages('electric%20%guitars')
     ])
-      .then(axios.spread(( galleries, guitars) => {
+      .then(axios.spread(( galleries, favorites) => {
         // When all requests are complete, set states
         self.setState({          
           galleries: galleries.data.galleries.gallery,
-          guitar_photos: guitars.data.photos.photo,
+          favorites: favorites.data.photos.photo,
           loading: false
         });
         
@@ -65,7 +73,7 @@ class App extends Component {
      * Combines default photos from application's state to show an even amount of photos for each category
      */
     return [      
-      ...this.state.guitar_photos.slice(0, 8)
+     // ...this.state.guitar_photos.slice(0, 8)
     ];
   }
 
@@ -121,7 +129,7 @@ class App extends Component {
                 path="/favorites"
                 render={() => <Favorites
                 isLoading={this.state.loading}
-                data={this.state.guitar_photos} />}
+                data={this.state.favorites} />}
               />
 
               <Route

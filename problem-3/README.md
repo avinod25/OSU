@@ -26,15 +26,24 @@ To get a local copy of the project up and running, follow these simple steps:
 2. Clone the repo
 
 3. Install Node packages
+
 ```sh
 npm install
 ```
 4. Add API key to `config.js` file
+
 ```sh
 const apiKey = 'your_api_key_here';
 export default apiKey;
 ```
 5. Move to project folder & start node server
+
 ```sh
 npm start
+```
+
+6. You can access application using below URL
+
+```sh
+http://localhost:3000/
 ```

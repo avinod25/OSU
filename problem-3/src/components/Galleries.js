@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import GalleryItem from './GalleryItem';
 import Loader from './Loader';
 import NotFound from './NotFound';
+import { AddGallery } from './NewGallery/AddGallery';
 
 const Galleries = ({ data, isLoading }) => {
+  
+  const triggerText = 'New Gallery';
+    
   let results;
 
   if (isLoading) {
@@ -32,10 +36,7 @@ const Galleries = ({ data, isLoading }) => {
       <div role="main" className="galleries-list-container fluid-centered ">
         <div  className="view galleries-list-toolbar-view requiredToShowOnServer">
           <div className="toolbar-container">
-            <a role="button" className="new-gallery-button" href="#">
-              <svg className="icon icon-add_to_gallery"><use xlinkHref="#icon-add_to_gallery"></use></svg>
-              <span>New Gallery</span>
-            </a>
+            <AddGallery triggerText={triggerText}/>            
           </div>
         </div>
         <div  className="view photo-list-view requiredToShowOnServer" style={{height: '272px'}}>

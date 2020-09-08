@@ -29,7 +29,7 @@ const Favorites = ({ data, isLoading }) => {
   
   return (
     <div className="photo-container">
-      <h2>Results</h2>
+      <h2>Favorites</h2>
       <ul>
         {results}
       </ul>
