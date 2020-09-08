@@ -1,1 +1,1 @@
-# OSU
+# OSU Coding Exercise
