@@ -47,3 +47,14 @@ npm start
 ```sh
 http://localhost:3000/
 ```
+
+Sample screen shots
+
+### Favorites page
+![image](https://user-images.githubusercontent.com/70823695/92463505-e9060e80-f199-11ea-847a-73bd7fe5f92f.png)
+
+### Search page
+![image](https://user-images.githubusercontent.com/70823695/92463690-22d71500-f19a-11ea-8090-32fdff522e83.png)
+
+### Galleries page
+![image](https://user-images.githubusercontent.com/70823695/92463780-44d09780-f19a-11ea-8478-d5ee813d409f.png)
